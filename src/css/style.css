@@ -1,6 +1,15 @@
 body {
-    background-color:black;
-    color: #ECF0F1;
+    background-color: #FFEEAD;
+    color: #333333;
     font-family: 'Poppins', sans-serif;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+span {
+    font-family: 'Homemade Apple', cursive;
+}
+
+.welcome {
     text-align: center;
 }
