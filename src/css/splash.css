@@ -1,7 +1,7 @@
 body {
     font-family: 'Homemade Apple', cursive;
     font-size: 30px;
-    background: linear-gradient(#FFFFFF, #96ceb4, #88d8b0) fixed;
+    background: linear-gradient(#FFFFFF, #88d8b0) fixed;
     color: #ff6f69;
 }
 
@@ -35,7 +35,22 @@ body {
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
-@keyframes fadeout {
-    from {opacity: 1;}
-    to {opacity: 0;}
+
+@media only screen and (min-width: 1024.01px) {
+    body {
+        padding-left: 3.5em;
+        font-size: 50px;
+    }
+
+    .logo {
+        width: 1px;
+        margin: auto;
+        padding-right: 6em;
+        padding-top: 2.5em;
+    }
+
+    .row {
+        padding-left: 3.1em;
+        padding-top: 3em;
+    }
 }
