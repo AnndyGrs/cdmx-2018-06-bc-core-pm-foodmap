@@ -17,12 +17,12 @@ body {
 .logo {
     width: 1px;
     margin: auto;
-    padding-right: 6em;
+    padding-right: 6.1em;
     padding-top: 5em;
 }
 
 .row {
-    padding-left: 1.7em;
+    padding-left: 1.55em;
     padding-top: 5.5em;
 }
 
@@ -35,8 +35,7 @@ body {
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
-
-@media only screen and (min-width: 1024.01px) {
+@media only screen and (min-width: 768px) {
     body {
         padding-left: 3.5em;
         font-size: 50px;
@@ -45,12 +44,31 @@ body {
     .logo {
         width: 1px;
         margin: auto;
-        padding-right: 6em;
-        padding-top: 2.5em;
+        padding-right: 3.5em;
+        padding-top: 4em;
     }
 
     .row {
-        padding-left: 3.1em;
-        padding-top: 3em;
+        padding-left: 0.7em;
+        padding-top: 3.5em;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    body {
+        padding-left: 3.5em;
+        font-size: 50px;
+    }
+
+    .logo {
+        width: 1px;
+        margin: auto;
+        padding-right: 3.3em;
+        padding-top: 8.5em;
+    }
+
+    .row {
+        padding-left: 2em;
+        padding-top: 6em;
     }
 }
