@@ -10,6 +10,10 @@ span {
     font-family: 'Homemade Apple', cursive;
 }
 
+.card-body { 
+    border-color: 1px solid #000000;
+}
+
 .welcome {
     text-align: center;
     padding-left: 1em;
