@@ -57,18 +57,18 @@ body {
 @media only screen and (min-width: 1024px) {
     body {
         padding-left: 3.5em;
-        font-size: 50px;
+        font-size: 55px;
     }
 
     .logo {
         width: 1px;
         margin: auto;
-        padding-right: 3.3em;
-        padding-top: 8.5em;
+        padding-right: 15%;
+        padding-top: 12%;
     }
 
     .row {
-        padding-left: 2em;
-        padding-top: 6em;
+        padding-left: 15%;
+        padding-top: 15%;
     }
 }
