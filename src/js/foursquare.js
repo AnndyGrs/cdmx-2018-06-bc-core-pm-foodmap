@@ -1,30 +1,35 @@
-let mainUrl = 'https://api.foursquare.com/v2/venues/search?v=20161016&ll=';
-let lat = 19.43;
-let lng = -99.13;
-let queryS = 'sushi';
+(function () {
+  var content = document.getElementById("geolocation-test");
 
-let url = mainUrl + lat + '%2C%20' + lng + '&query=' + queryS +
-  '&intent=browse&radius=2000&limit=15&client_id=IXDFMKCHXF2XOTGBHAF4F2SEQKVIFPK5W0TFQKJPGQ0I4DYW&client_secret=SBBKRTJS044DFMSOVP1ZUZXRXJSFZZM3H434OZTMAM5EPVEJ';
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (objPosition) {
+      let lng = objPosition.coords.longitude;
+      let lat = objPosition.coords.latitude;
+      let mainUrl = 'https://api.foursquare.com/v2/venues/search?v=20161016&ll=';
+      let queryS = 'sushi';
 
-const getData = () => {
-  fetch(url)
-    .then(restaurant => restaurant.json())
-    .then(restaurant => {
-      resultPlaces(restaurant);
-    });
-};
+      let url = mainUrl + lat + '%2C%20' + lng + '&query=' + queryS +
+        '&intent=browse&radius=2000&limit=15&client_id=IXDFMKCHXF2XOTGBHAF4F2SEQKVIFPK5W0TFQKJPGQ0I4DYW&client_secret=SBBKRTJS044DFMSOVP1ZUZXRXJSFZZM3H434OZTMAM5EPVEJ';
 
-getData();
+      const getData = () => {
+        fetch(url)
+          .then(restaurant => restaurant.json())
+          .then(restaurant => {
+            resultPlaces(restaurant);
+          });
+      };
 
-const resultPlaces = (restaurant) => {
-  let firstArray = restaurant.response.venues;
-  let i = 0;
-  for (i; i < firstArray.length; i++) {
-    let name = firstArray[i].name;
-    let location = firstArray[i].location.formattedAddress;
-    console.log(location);
-    document.getElementById('messageSearch').innerHTML = `Buscaste: ${queryS}`;
-    document.getElementById('results').innerHTML += `<section class="row">
+      getData();
+
+      const resultPlaces = (restaurant) => {
+        let firstArray = restaurant.response.venues;
+        let i = 0;
+        for (i; i < firstArray.length; i++) {
+          let name = firstArray[i].name;
+          let location = firstArray[i].location.formattedAddress;
+          console.log(location);
+          document.getElementById('messageSearch').innerHTML = `Buscaste: ${queryS}`;
+          document.getElementById('results').innerHTML += `<section class="row">
     <section class="col-sm-12 col-md-6 col-lg-4">
       <div class="card mt-2">
         <div class="card-body">
@@ -52,5 +57,29 @@ const resultPlaces = (restaurant) => {
     </div>
   </div>
 </div>`;
+        }
+      };
+
+    }, function (objPositionError) {
+      switch (objPositionError.code) {
+        case objPositionError.PERMISSION_DENIED:
+          content.innerHTML = "No se ha permitido el acceso a la posición del usuario.";
+          break;
+        case objPositionError.POSITION_UNAVAILABLE:
+          content.innerHTML = "No se ha podido acceder a la información de su posición.";
+          break;
+        case objPositionError.TIMEOUT:
+          content.innerHTML = "El servicio ha tardado demasiado tiempo en responder.";
+          break;
+        default:
+          content.innerHTML = "Error desconocido.";
+      }
+    }, {
+        maximumAge: 75000,
+        timeout: 15000
+      });
   }
-};
+  else {
+    content.innerHTML = "Su navegador no soporta la API de geolocalización.";
+  }
+})();
