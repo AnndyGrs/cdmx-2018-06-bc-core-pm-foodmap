@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Homemade+Apple" rel="stylesheet">
 
-    <link rel="stylesheet" href="../css/style.css">
+    <!-- <link rel="stylesheet" href="../css/style.css"> -->
 
     <title>T a b e r u</title>
 </head>
@@ -26,15 +26,6 @@
                     <span class="font-weight-bold">taberu</span>
                 </h3>
             </a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <form class="form-inline">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Ingresa tu criterio de busqueda"
-                            id="searchPlaces">
-                        <button class="btn btn-outline-dark my-2 my-sm-0" id="searchButton">Buscar</button>
-                    </form>
-                </ul>
-            </div>
         </nav>
     </header>
     <main>
@@ -47,12 +38,13 @@
             <section class="row d-lg-none align-left">
                 <form class="col-sm-9 col-md-7 form-inline">
                     <input class="form-control mr-sm-2" type="search" placeholder="Ingresa tu criterio de busqueda"
-                        aria-label="Search">
+                        aria-label="Search" id="food">
                     <button class="btn btn-outline-dark my-2 my-sm-0 mx-auto" id="searchButton">Buscar</button>
                 </form>
             </section>
             <br>
             <section id="messageSearch">
+                <div id="geolocation-test"></div>
             </section>
             <hr>
             <section id="results">

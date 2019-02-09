@@ -1,3 +1,6 @@
+document.getElementById('searchButton').addEventListener('click', () => {
+  alert('Hola Mundo!');        
+});
 (function () {
   var content = document.getElementById("geolocation-test");
 
@@ -10,6 +13,7 @@
 
       let url = mainUrl + lat + '%2C%20' + lng + '&query=' + queryS +
         '&intent=browse&radius=2000&limit=15&client_id=IXDFMKCHXF2XOTGBHAF4F2SEQKVIFPK5W0TFQKJPGQ0I4DYW&client_secret=SBBKRTJS044DFMSOVP1ZUZXRXJSFZZM3H434OZTMAM5EPVEJ';
+
 
       const getData = () => {
         fetch(url)
@@ -27,7 +31,7 @@
         for (i; i < firstArray.length; i++) {
           let name = firstArray[i].name;
           let location = firstArray[i].location.formattedAddress;
-          console.log(location);
+          // console.log(location);
           document.getElementById('messageSearch').innerHTML = `Buscaste: ${queryS}`;
           document.getElementById('results').innerHTML += `<section class="row">
     <section class="col-sm-12 col-md-6 col-lg-4">
