@@ -6,6 +6,12 @@ body {
     font-size: 1.3em;
 }
 
+#mapContainer {
+    width: 700px;
+    height: 375px;
+    display: block;
+}
+
 .navbar {
     background-color: #f8c2b1;
 }
@@ -13,4 +19,8 @@ body {
 .navbar-brand {
     font-family: 'Satisfy', cursive;
     font-size: 2em;
+}
+
+#places {
+    box-sizing: content-box;
 }

@@ -46,9 +46,17 @@
 
       const resultPlaces = (restaurant) => {
         let firstArray = restaurant.response.venues;
-        // console.log(firstArray);
+        console.log(firstArray);
         let i = 0;
         for (i; i < firstArray.length; i++) {
+          document.getElementById('places').innerHTML += `
+          <div class="card col-3 m-2">
+            <div class="card-body text-left">
+              <h5 class="card-title"> ${firstArray[i].name} </h5>
+              <h6 class="card-subtitle mb-2 text-muted"> ${firstArray[i].location.formattedAddress} </h6>
+            </div>
+          </div>`
+
           let icon = new H.map.Icon('../images/chicken.png');
 
           // Create a marker using the previously instantiated icon:
