@@ -1,18 +1,37 @@
-document.getElementById('searchButton').addEventListener('click', () => {
-  alert('Hola Mundo!');        
-});
 (function () {
-  var content = document.getElementById("geolocation-test");
-
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (objPosition) {
       let lng = objPosition.coords.longitude;
       let lat = objPosition.coords.latitude;
       let mainUrl = 'https://api.foursquare.com/v2/venues/search?v=20161016&ll=';
-      let queryS = 'sushi';
+      let queryS = 'pizza';
 
       let url = mainUrl + lat + '%2C%20' + lng + '&query=' + queryS +
         '&intent=browse&radius=2000&limit=15&client_id=IXDFMKCHXF2XOTGBHAF4F2SEQKVIFPK5W0TFQKJPGQ0I4DYW&client_secret=SBBKRTJS044DFMSOVP1ZUZXRXJSFZZM3H434OZTMAM5EPVEJ';
+
+      let defaultLayers = platform.createDefaultLayers();
+
+      let map = new H.Map(document.getElementById('mapContainer'),
+        defaultLayers.normal.map,
+        {
+          zoom: 15,
+          center: {
+            lat: objPosition.coords.latitude,
+            lng: objPosition.coords.longitude
+          }
+        });
+
+      let icon = new H.map.Icon('../images/position.png');
+
+      // Create a marker using the previously instantiated icon:
+      var marker = new H.map.Marker({
+        lat: objPosition.coords.latitude,
+        lng: objPosition.coords.longitude
+      },
+        { icon: icon });
+
+      // Add the marker to the map:
+      map.addObject(marker);
 
 
       const getData = () => {
@@ -27,40 +46,20 @@ document.getElementById('searchButton').addEventListener('click', () => {
 
       const resultPlaces = (restaurant) => {
         let firstArray = restaurant.response.venues;
+        // console.log(firstArray);
         let i = 0;
         for (i; i < firstArray.length; i++) {
-          let name = firstArray[i].name;
-          let location = firstArray[i].location.formattedAddress;
-          // console.log(location);
-          document.getElementById('messageSearch').innerHTML = `Buscaste: ${queryS}`;
-          document.getElementById('results').innerHTML += `<section class="row">
-    <section class="col-sm-12 col-md-6 col-lg-4">
-      <div class="card mt-2">
-        <div class="card-body">
-          <a href="#" data-toggle="modal" data-target="#exampleModal">${name}</a>
-        </div>
-      </div>
-    </section>
-  </section>
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Informacion</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <p> Nombre: ${name} </p>
-      <p> Ubicacion: ${location}</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>`;
+          let icon = new H.map.Icon('../images/chicken.png');
+
+          // Create a marker using the previously instantiated icon:
+          var marker = new H.map.Marker({
+            lat: firstArray[i].location.lat,
+            lng: firstArray[i].location.lng
+          },
+            { icon: icon });
+
+          // Add the marker to the map:
+          map.addObject(marker);
         }
       };
 
