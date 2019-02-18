@@ -1,4 +1,5 @@
-let platform = new H.service.Platform({
-    'app_id': '0767yutzHNKyjofIvmNw',
-    'app_code': 'LJamwYiPOBggimNnhC9lcQ'
+let food = document.getElementById('searchBar');
+
+document.getElementById('searchButton').addEventListener('click', event => {
+    console.log(food.value);
 });
